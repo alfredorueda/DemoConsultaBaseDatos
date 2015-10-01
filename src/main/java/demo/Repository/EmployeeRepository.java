@@ -9,5 +9,6 @@ public interface EmployeeRepository extends PagingAndSortingRepository<Employee,
 
     public List<Employee> findBySalaryGreaterThan(Double salary);
     public List<Employee> findByNameContaining (String name);
-
+    public List<Employee> findByOrderByNameDesc ();
+    public List<Employee> findBySalaryBetween (Double minSalary, Double maxSalary);
 }

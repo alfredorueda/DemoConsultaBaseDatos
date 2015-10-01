@@ -15,6 +15,7 @@ public class EmployeeService {
     private EmployeeRepository employeeRepository;
 
     public void testEmployee() {
+
         Employee employee = new Employee();
         employee.setName("Luis");
         employee.setSalary(17_000.00);
@@ -38,7 +39,14 @@ public class EmployeeService {
 
         System.out.println(employeeRepository.findBySalaryGreaterThan(18_000.00));
         System.out.println(employeeRepository.findByNameContaining("Juan"));
+        System.out.println(employeeRepository.findByOrderByNameDesc());
+        System.out.println(employeeRepository.findBySalaryBetween(15_000.00, 26_000.00));
 
-
+        List<Employee> employees = employeeRepository.findByOrderByNameDesc();
+        //currentEmployee es la variable que va apuntando a cada empleado de la lista
+        for (Employee currentEmployee : employees) {
+            System.out.println(currentEmployee.getName());
+        }
     }
+
 }
