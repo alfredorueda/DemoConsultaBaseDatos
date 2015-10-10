@@ -47,6 +47,13 @@ public class EmployeeService {
         for (Employee currentEmployee : employees) {
             System.out.println(currentEmployee.getName());
         }
+
+        Employee employee1 = employeeRepository.findFirstByOrderBySalaryDesc();
+
+        List<Employee> employees1 = employeeRepository.findFirst2ByOrderBySalaryDesc();
+
+        System.out.println(employee1);
+        System.out.println(employees1);
     }
 
 }

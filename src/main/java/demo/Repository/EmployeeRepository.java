@@ -11,4 +11,8 @@ public interface EmployeeRepository extends PagingAndSortingRepository<Employee,
     public List<Employee> findByNameContaining (String name);
     public List<Employee> findByOrderByNameDesc ();
     public List<Employee> findBySalaryBetween (Double minSalary, Double maxSalary);
+
+    Employee findFirstByOrderBySalaryDesc();
+
+    List<Employee> findFirst2ByOrderBySalaryDesc();
 }
