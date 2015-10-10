@@ -1,7 +1,9 @@
 package demo.Service;
 
 import demo.Model.Employee;
+import demo.Model.Project;
 import demo.Repository.EmployeeRepository;
+import demo.Repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +15,9 @@ import java.util.List;
 public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private ProjectRepository projectRepository;
 
     public void testEmployee() {
 
@@ -27,10 +32,14 @@ public class EmployeeService {
         employee2.setSalary(27_000.00);
         employeeRepository.save(employee2);
 
+        Project project = new Project();
+        project.setDescription("Prueba");
+        projectRepository.save(project);
 
         Employee employee3 = new Employee();
         employee3.setName("Juan");
         employee3.setSalary(20_000.00);
+        employee3.setProject(project);
         employeeRepository.save(employee3);
 
 
@@ -52,8 +61,12 @@ public class EmployeeService {
 
         List<Employee> employees1 = employeeRepository.findFirst2ByOrderBySalaryDesc();
 
+        String string = "prueba";
+        List<Employee> employees_project = employeeRepository.findByProjectDescriptionContains(string);
+
         System.out.println(employee1);
         System.out.println(employees1);
+        System.out.println(employees_project);
     }
 
 }

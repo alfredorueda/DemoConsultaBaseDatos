@@ -15,4 +15,6 @@ public interface EmployeeRepository extends PagingAndSortingRepository<Employee,
     Employee findFirstByOrderBySalaryDesc();
 
     List<Employee> findFirst2ByOrderBySalaryDesc();
+
+    List<Employee> findByProjectDescriptionContains(String prueba);
 }

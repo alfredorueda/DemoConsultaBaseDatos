@@ -25,6 +25,9 @@ public class Employee {
     @Min(500)
     private double salary;
 
+    @ManyToOne
+    private Project project;
+
 
     public Employee() {
     }
@@ -65,6 +68,14 @@ public class Employee {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     @Override
