@@ -1,7 +1,9 @@
 package demo.Repository;
 
 import demo.Model.Employee;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -17,4 +19,7 @@ public interface EmployeeRepository extends PagingAndSortingRepository<Employee,
     List<Employee> findFirst2ByOrderBySalaryDesc();
 
     List<Employee> findByProjectDescriptionContains(String prueba);
+
+    @Query("SELECT e FROM Employee e where e.project.description = :projectName order by e.salary desc ")
+    List<Employee> findEmployeeOrderBySalaryFromProject(@Param("projectName") String projectName);
 }

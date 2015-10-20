@@ -27,14 +27,16 @@ public class EmployeeService {
         employeeRepository.save(employee);
 
 
+
+        Project project = new Project();
+        project.setDescription("prueba");
+        projectRepository.save(project);
+
         Employee employee2 = new Employee();
         employee2.setName("Pedro");
         employee2.setSalary(27_000.00);
+        //employee2.setProject(project);
         employeeRepository.save(employee2);
-
-        Project project = new Project();
-        project.setDescription("Prueba");
-        projectRepository.save(project);
 
         Employee employee3 = new Employee();
         employee3.setName("Juan");
@@ -67,6 +69,8 @@ public class EmployeeService {
         System.out.println(employee1);
         System.out.println(employees1);
         System.out.println(employees_project);
+
+        System.out.println(employeeRepository.findEmployeeOrderBySalaryFromProject("prueba"));
     }
 
 }
